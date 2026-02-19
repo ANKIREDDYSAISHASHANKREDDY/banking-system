@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin | TSP Bank</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo-wrap">
+      <div class="logo-box" aria-hidden="true"></div>
+      <div class="logo-text">TSP <span class="logo-sub">Bank</span> Admin</div>
+    </div>
+    <div>
+      <button id="logoutBtn" class="btn ghost">Logout</button>
+    </div>
+  </header>
+
+  <main class="admin-dashboard container">
+    <section class="admin-panel card">
+      <h2>Create New Account</h2>
+      <form id="createAccountForm" class="admin-form">
+        <div class="form-row"><label for="accNo">Account No</label><input id="accNo" class="input" type="number" placeholder="Account No" required></div>
+        <div class="form-row"><label for="name">Full name</label><input id="name" class="input" type="text" placeholder="Full Name" required></div>
+        <div class="form-row"><label for="balance">Opening balance</label><input id="balance" class="input" type="number" placeholder="Opening Balance" required></div>
+        <button type="submit" class="btn primary">Create</button>
+      </form>
+    </section>
+
+    <section class="accounts-list card">
+      <h2>All Accounts</h2>
+      <table id="accountsTable" class="table">
+        <thead>
+          <tr><th>Acc No</th><th>Name</th><th>Balance</th><th>Actions</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

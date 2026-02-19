@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TSP Demo Bank — UPI Payments</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- QRCode library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+  <header class="topbar" style="background:white;border-bottom:1px solid #eef2f7">
+    <div style="display:flex;gap:16px;align-items:center">
+      <a href="index.html" class="btn ghost">← Back to Dashboard</a>
+      <h2 style="margin:0">UPI Payments</h2>
+    </div>
+    <div>
+      <span id="userInfo" class="small muted"></span>
+    </div>
+  </header>
+
+  <main class="container" style="padding-top:20px">
+    <div class="row">
+      <!-- Left: UPI forms -->
+      <div class="card" style="max-width:640px">
+        <h3>UPI Payment — Choose Mode</h3>
+
+        <div style="display:flex;gap:10px;margin-bottom:14px">
+          <button id="modeStatic" class="btn primary">Static (Merchant QR)</button>
+          <button id="modeDynamic" class="btn ghost">Dynamic (Pay Now)</button>
+        </div>
+
+        <!-- Static Merchant QR -->
+        <div id="staticSection" style="display:block">
+          <h4>Static QR (Merchant)</h4>
+          <div class="form-row"><label>Merchant UPI ID</label><input id="stat_upiId" class="input" placeholder="merchant@bank"></div>
+          <div class="form-row"><label>Amount (optional)</label><input id="stat_amt" class="input" type="number" placeholder="e.g. 500"></div>
+          <div class="form-row"><label>Reference / Note (optional)</label><input id="stat_note" class="input" placeholder="Invoice #1234"></div>
+          <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+            <button id="genStatic" class="btn primary">Generate QR</button>
+            <button id="downloadStatic" class="btn ghost">Download QR</button>
+            <span id="staticMsg" class="small muted"></span>
+          </div>
+        </div>
+
+        <!-- Dynamic Sender QR & Pay -->
+        <div id="dynamicSection" style="display:none;margin-top:18px">
+          <h4>Dynamic QR / Pay (Sender)</h4>
+          <div class="form-row"><label>Receiver UPI ID</label><input id="dyn_upiId" class="input" placeholder="friend@bank"></div>
+          <div class="form-row"><label>Amount</label><input id="dyn_amt" class="input" type="number" placeholder="e.g. 250"></div>
+          <div class="form-row"><label>Note (optional)</label><input id="dyn_note" class="input" placeholder="For groceries"></div>
+          <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+            <button id="payNow" class="btn primary">Pay Now (Debit My Account)</button>
+            <button id="downloadDyn" class="btn ghost">Download QR</button>
+            <span id="dynMsg" class="small muted"></span>
+          </div>
+          <p class="small muted" style="margin-top:8px">QR below updates live as you type — scan to pay from another phone or use the Pay Now button to debit this (logged in) account.</p>
+        </div>
+      </div>
+
+      <!-- Right: QR preview -->
+      <div class="card" style="max-width:360px;display:flex;flex-direction:column;align-items:center;gap:12px">
+        <h3>QR Preview</h3>
+        <div id="qrcode" style="padding:18px;background:#fff;border-radius:10px"></div>
+        <div id="qrInfo" class="small muted" style="text-align:center">QR will appear here</div>
+        <div style="width:100%;margin-top:6px">
+          <button id="clearQr" class="btn ghost wfull">Clear QR</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">© 2025 TSP Demo Bank — UPI Demo</footer>
+
+  <script src="js/upi.js"></script>
+  <script>
+    gsap.from(".card", { y: 10, opacity: 0, stagger: 0.06, duration: 0.5 });
+  </script>
+</body>
+</html>

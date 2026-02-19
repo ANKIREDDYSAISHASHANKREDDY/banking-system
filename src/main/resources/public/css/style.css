@@ -1,0 +1,130 @@
+:root{
+  --primary: #002e6d; /* deep bank blue */
+  --primary-2: #0056b3; /* accent blue */
+  --accent: #d91f26; /* subtle red accent */
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --glass: rgba(255,255,255,0.98);
+  --muted: #6b7280;
+  --card-shadow: 0 10px 30px rgba(2,6,23,0.08);
+  --radius: 12px;
+}
+/* UPI page tweaks */
+#qrcode { display:flex; align-items:center; justify-content:center; min-height:240px; }
+#qrcode img, #qrcode canvas { width:220px; height:220px; }
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: 'Poppins', Inter, Roboto, "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color:#0f1724;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Top nav for login */
+.top-nav{
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  padding: 14px 28px;
+  color: #fff;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow: 0 4px 28px rgba(2,6,23,0.12);
+}
+.logo-wrap{display:flex;align-items:center;gap:12px}
+.logo-box{width:44px;height:34px;background:var(--accent);border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,0.12)}
+.logo-text{font-weight:700;font-size:18px;color:#fff}
+.logo-text .logo-sub{opacity:0.95;font-weight:600}
+
+/* Login */
+.center{display:flex;align-items:center;justify-content:center;height:calc(100vh - 74px);padding:28px}
+.login-card{width:420px;max-width:92%;padding:28px;border-radius:14px;background:var(--surface);box-shadow:var(--card-shadow);text-align:left}
+.login-card .title{font-size:20px;margin:0 0 6px;color:var(--primary)}
+.login-card .subtitle{color:var(--muted);margin:0 0 16px;font-size:13px}
+.input{width:100%;padding:12px;border-radius:8px;border:1px solid #e9f0fb;margin-bottom:12px;font-size:15px;background:#fbfdff}
+.input:focus{outline:none;border-color:var(--primary-2);box-shadow:0 8px 22px rgba(3,43,111,0.06)}
+
+.form-row label{display:block;font-weight:600;color:#334155;margin-bottom:6px}
+.form-actions{display:flex;justify-content:space-between;align-items:center;margin:6px 0 12px}
+.form-actions .remember{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.form-actions .forgot{font-size:13px;color:var(--primary-2);text-decoration:none}
+.form-actions .forgot:hover{text-decoration:underline}
+.form-cta{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:700}
+.btn.primary{background:linear-gradient(90deg,var(--primary),var(--primary-2));color:#fff;transition:transform .12s ease, box-shadow .12s ease}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(3,43,111,0.12)}
+.btn.ghost{background:transparent;border:1px solid rgba(3,43,111,0.08);color:var(--primary);font-weight:600}
+.wfull{width:100%}
+.security-note{font-size:13px;color:var(--muted);margin-top:12px}
+
+/* App layout */
+.app-body{height:100vh;display:flex;overflow:hidden}
+.sidebar{
+  width:240px;background:linear-gradient(180deg,var(--primary),var(--primary-2));
+  color:#fff;padding:18px 12px;display:flex;flex-direction:column;justify-content:space-between;transition:width .25s;
+}
+.sidebar.collapsed{width:72px}
+.side-nav{display:flex;flex-direction:column;gap:8px;padding:16px}
+.side-item{background:transparent;border:none;color:rgba(255,255,255,0.95);padding:12px 14px;border-radius:10px;text-align:left;cursor:pointer;font-weight:600}
+.side-item:hover{background:rgba(255,255,255,0.06)}
+.side-bottom{padding:12px}
+.main-wrap{flex:1;display:flex;flex-direction:column;height:100vh}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:white;border-bottom:1px solid #eef2f7}
+.page-title{font-size:18px;font-weight:700}
+.user-summary{color:var(--muted)}
+.container{padding:20px;flex:1;overflow:auto}
+
+/* cards & dashboard layout */
+.row{display:flex;gap:18px;flex-wrap:wrap}
+.card{background:var(--surface);border-radius:12px;padding:18px;box-shadow:var(--card-shadow);flex:1;min-width:260px}
+.balance-card{display:flex;flex-direction:column;gap:6px}
+.balance{font-size:28px;font-weight:800;color:var(--primary)}
+.small{font-size:13px;color:var(--muted)}
+.actions{display:flex;gap:8px;margin-top:10px}
+
+/* transfer form */
+.transfer-card form { max-width: 520px; }
+.form-row{margin-bottom:12px}
+.form-row label{display:block;font-weight:600;color:#334155;margin-bottom:6px}
+.form-row input, .form-row select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6eef7}
+
+/* transactions table */
+.table{width:100%;border-collapse:collapse}
+.table th{background:var(--primary);color:#fff;padding:10px;text-align:left}
+.table td{padding:10px;border-bottom:1px solid #f1f5f9}
+
+/* cards module */
+.card-visual{background:linear-gradient(135deg,#0b67b2,#3ea0ff);color:#fff;padding:18px;border-radius:14px;min-width:300px}
+.card-visual .num{letter-spacing:2px;font-weight:700;margin-top:14px}
+.card-visual small{opacity:0.9}
+
+/* admin grid */
+.admin-dashboard{display:grid;grid-template-columns:360px 1fr;gap:18px}
+
+/* overlay */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;z-index:9999}
+
+/* footer */
+.footer{text-align:center;padding:10px;background:#fff;border-top:1px solid #eef2f7}
+
+/* responsive */
+@media (max-width:900px){
+  .sidebar{display:none}
+  .admin-dashboard{grid-template-columns:1fr}
+  .login-card{width:92%}
+}
+
+#upiCard input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccd;
+  border-radius: 8px;
+}
+#upiCard button {
+  margin-top: 8px;
+}
+#qrcode {
+  background: #fff;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}

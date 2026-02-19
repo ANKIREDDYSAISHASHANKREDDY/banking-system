@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TSP Bank — Login</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body class="login-body">
+  <nav class="top-nav">
+    <div class="logo-wrap" aria-hidden="true">
+      <div class="logo-box"></div>
+      <div class="logo-text">TSP <span class="logo-sub">Bank</span></div>
+    </div>
+  </nav>
+
+  <main class="center">
+    <section class="glass-card login-card">
+      <header class="card-header">
+        <h1 class="title">Welcome to TSP Bank</h1>
+        <p class="subtitle">Secure Internet Banking</p>
+      </header>
+
+      <form id="loginForm" class="form" autocomplete="on" aria-label="Login form">
+        <div class="form-row">
+          <label for="role">Role</label>
+          <select id="role" class="input" name="role">
+            <option value="customer">Customer</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="accNo" id="accLabel">Account Number</label>
+          <input id="accNo" name="accNo" class="input" type="text" inputmode="numeric" placeholder="Enter account number" />
+        </div>
+
+        <div class="form-row">
+          <label for="password">Password</label>
+          <input id="password" name="password" class="input" type="password" placeholder="Enter password" required />
+        </div>
+
+        <div class="form-actions">
+          <label class="remember"><input type="checkbox" id="remember" /> Remember me</label>
+          <a class="forgot" href="#">Forgot password?</a>
+        </div>
+
+        <div class="form-cta">
+          <button type="submit" class="btn primary wfull">Login</button>
+          <button type="button" id="openCreate" class="btn ghost wfull">Open Account</button>
+        </div>
+
+        <p id="loginMessage" class="muted"></p>
+      </form>
+
+      <p class="security-note">Demo note: admin password is <strong>admin123</strong>.</p>
+    </section>
+  </main>
+
+  <script>
+    // slight entrance animation
+    gsap.from(".login-card", { y: 30, opacity: 0, duration: 0.9, ease: "power3.out" });
+  </script>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

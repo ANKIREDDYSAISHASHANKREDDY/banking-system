@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TSP Bank — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body class="app-body">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="logo-wrap" style="margin-bottom:8px;">
+      <div class="logo-box" aria-hidden="true"></div>
+      <div class="logo-text">TSP <span class="logo-sub">Bank</span></div>
+    </div>
+    <nav class="side-nav">
+      <button class="side-item" data-route="accounts">Accounts</button>
+      <button class="side-item" data-route="payments">Payments</button>
+      <button class="side-item" data-route="cards">Cards</button>
+      <button class="side-item" data-route="support">Support</button>
+    </nav>
+    <div class="side-bottom">
+      <button id="logoutBtn" class="btn ghost wfull">Logout</button>
+    </div>
+  </aside>
+
+  <div class="main-wrap">
+    <header class="topbar">
+      <div class="top-left">
+        <button id="menuToggle" class="btn icon">&#9776;</button>
+        <div class="page-title" id="pageTitle">Dashboard</div>
+      </div>
+      <div class="top-right">
+        <div id="userSummary" class="user-summary">Not logged</div>
+      </div>
+    </header>
+
+    <main id="app" class="app container">
+      <!-- app.js will populate -->
+    </main>
+
+    <!-- Embedded UPI section (moved from standalone upi.html) -->
+    <section id="upiSection" class="container" style="padding-top:18px;display:none">
+      <div class="row">
+        <!-- Left: UPI forms -->
+        <div class="card" style="max-width:640px">
+          <h3>UPI Payment — Choose Mode</h3>
+
+          <div style="display:flex;gap:10px;margin-bottom:14px">
+            <button id="modeStatic" class="btn primary">Static (Merchant QR)</button>
+            <button id="modeDynamic" class="btn ghost">Dynamic (Pay Now)</button>
+          </div>
+
+          <!-- Static Merchant QR -->
+          <div id="staticSection" style="display:block">
+            <h4>Static QR (Merchant)</h4>
+            <div class="form-row"><label>Merchant UPI ID</label><input id="stat_upiId" class="input" placeholder="merchant@bank"></div>
+            <div class="form-row"><label>Amount (optional)</label><input id="stat_amt" class="input" type="number" placeholder="e.g. 500"></div>
+            <div class="form-row"><label>Reference / Note (optional)</label><input id="stat_note" class="input" placeholder="Invoice #1234"></div>
+            <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+              <button id="genStatic" class="btn primary">Generate QR</button>
+              <button id="downloadStatic" class="btn ghost">Download QR</button>
+              <span id="staticMsg" class="small muted"></span>
+            </div>
+          </div>
+
+          <!-- Dynamic Sender QR & Pay -->
+          <div id="dynamicSection" style="display:none;margin-top:18px">
+            <h4>Dynamic QR / Pay (Sender)</h4>
+            <div class="form-row"><label>Receiver UPI ID</label><input id="dyn_upiId" class="input" placeholder="friend@bank"></div>
+            <div class="form-row"><label>Amount</label><input id="dyn_amt" class="input" type="number" placeholder="e.g. 250"></div>
+            <div class="form-row"><label>Note (optional)</label><input id="dyn_note" class="input" placeholder="For groceries"></div>
+            <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+              <button id="payNow" class="btn primary">Pay Now (Debit My Account)</button>
+              <button id="downloadDyn" class="btn ghost">Download QR</button>
+              <span id="dynMsg" class="small muted"></span>
+            </div>
+            <p class="small muted" style="margin-top:8px">QR below updates live as you type — scan to pay from another phone or use the Pay Now button to debit this (logged in) account.</p>
+          </div>
+        </div>
+
+        <!-- Right: QR preview -->
+        <div class="card" style="max-width:360px;display:flex;flex-direction:column;align-items:center;gap:12px">
+          <h3>QR Preview</h3>
+          <div id="qrcode" style="padding:18px;background:#fff;border-radius:10px"></div>
+          <div id="qrInfo" class="small muted" style="text-align:center">QR will appear here</div>
+          <div style="width:100%;margin-top:6px">
+            <button id="clearQr" class="btn ghost wfull">Clear QR</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">© 2025 TSP Bank • Demo</footer>
+  </div>
+
+  <script src="js/app.js"></script>
+  <!-- QRCode lib & UPI handlers (embedded UPI) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="js/upi.js"></script>
+</body>
+</html>
